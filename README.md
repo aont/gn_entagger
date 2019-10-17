@@ -13,5 +13,5 @@ gn_query.py image.cue | tee gn_data.json
 less gn_data.json
 
 ## entag
-gn_entagger.py -i 1 data.json
+gn_entagger.py -i 1 gn_data.json
 ```
