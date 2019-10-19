@@ -77,7 +77,7 @@ def len_cdda(path):
     img_size = os.path.getsize(path)
     return int((img_size * 75)/(44100*2*2))
 
-def acquire_disc_toc(cue, e = os.devnull):
+def acquire_disc_toc(cue, e):
     cue_f = open(cue, u'r')
     cue_data  = parse_cue(cue_f, e)
     cue_f.close()

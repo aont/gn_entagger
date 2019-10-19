@@ -24,7 +24,7 @@ def check_none(obj):
 def valid_fn(fn):
     return fn.replace("\\", "¥").replace("/", "／").replace(":", "：").replace("*", "＊").replace("?", "？").replace("<", "＜").replace(">", "＞").replace("|", "｜")
 
-def entag(json_path, idx_album_p1, stderr = os.devnull):
+def entag(json_path, idx_album_p1, stderr):
     # cwd = os.getcwd() 
 
     idx_album = idx_album_p1 - 1
