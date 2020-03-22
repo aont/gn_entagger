@@ -2,9 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import ctypes
+import os
 
-
+gnsdk_path = os.path.dirname(__file__)
+prev_dir = os.getcwd()
+os.chdir(gnsdk_path)
 _dll = ctypes.WinDLL('gnsdk_musicid.dll')
+os.chdir(prev_dir)
 
 _dll.gnsdk_musicid_initialize.restype = ctypes.c_uint
 _dll.gnsdk_musicid_initialize.argtypes = [ctypes.c_uint64]

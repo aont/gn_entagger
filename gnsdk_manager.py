@@ -2,8 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import ctypes
+import os
 
+gnsdk_path = os.path.dirname(__file__)
+prev_dir = os.getcwd()
+os.chdir(gnsdk_path)
 _dll = ctypes.WinDLL('gnsdk_manager.dll')
+os.chdir(prev_dir)
+
 _dll.gnsdk_manager_get_version.argtypes = None
 _dll.gnsdk_manager_get_version.restype = ctypes.c_char_p
 get_version = _dll.gnsdk_manager_get_version
