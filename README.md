@@ -1,4 +1,4 @@
-## Tools for generate mp3 entagged with with Gracenote data
+## Tools to generate mp3 entagged with with Gracenote data
 
 ### Required Libraries
 
