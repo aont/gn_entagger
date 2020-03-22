@@ -1,11 +1,10 @@
-## Tools for entagging mp3 from audio CD  with Gracenote data
+## Tools for generate mp3 entagged with with Gracenote data
 
 ### Required Libraries
 
 - GNSDK
   - gnsdk_manager.dll
   - gnsdk_musicid.dll
-  - gnsdk_storage_sqlite.dll
 - Python3
   - mutagen
   - lxml
