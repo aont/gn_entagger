@@ -70,9 +70,11 @@ def query_gracenote(toc, stdout, stderr):
     if err != 0:
         raise Exception("Exception")
 
+    
     err = gnsdk_musicid.query_set_toc_string(query_handle.value, toc.encode('utf-8'))
     stderr.write("[Info] gnsdk_musicid_query_set_toc_string(query_handle, toc)=0x%X\n" % (err))
     if err != 0:
+        # sys.stderr.write("[info] toc=%s\n" % toc)
         raise Exception("Exception")
 
     response_gdo = ctypes.c_uint64()
@@ -217,13 +219,15 @@ def main():
     args = parser.parse_args()
     cue = args.cue
 
-    sys.stderr.write("[info] acquire_disc_toc cue=%s ..." % cue)
+    sys.stderr.write("[info] acquire_disc_toc cue=%s ...\n" % cue)
     frame_ary = cue_parser.acquire_disc_toc(cue, sys.stderr)
     sys.stderr.write("done\n")
     
     toc = "%s\n" % " ".join(map(lambda x: str(x), frame_ary))
     gn_data = query_gracenote(toc, sys.stdout, sys.stderr)
-    sys.stdout.write("%s\n"%json.dumps(gn_data, ensure_ascii=False, indent=2))
+    # json.dump(gn_data, sys.stdout.buffer, ensure_ascii=False, indent=2)
+    sys.stdout.buffer.write(json.dumps(gn_data, ensure_ascii=False, indent=2).encode("utf-8"))
+    sys.stdout.buffer.write(b"\n")
 
 if __name__ == '__main__':
     main()

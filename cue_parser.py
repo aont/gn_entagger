@@ -84,7 +84,10 @@ def acquire_disc_toc(cue, e):
     frame_ary = cue_data.get("frame")
     img = os.path.join(os.path.dirname(cue), cue_data.get("image"))
     lba_end = len_cdda(img)
+    # for i in range(len(frame_ary)):
+    #     frame_ary[i] += 150
     frame_ary.append(lba_end)
+    frame_ary[0] = 150
     return frame_ary
     
 
